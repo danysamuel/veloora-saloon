@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velora Salon | Wallan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fffaf8;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topbar {
+      background: #111;
+      color: white;
+      padding: 12px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .topbar-right {
+      display: flex;
+      gap: 18px;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 7%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      color: #c2185b;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c2185b, #e91e63);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 999px;
+      transition: 0.3s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-family: inherit;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(233,30,99,0.25);
+    }
+
+    .hero {
+      min-height: 92vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1600&auto=format&fit=crop') center/cover;
+      display: flex;
+      align-items: center;
+      padding: 0 7%;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 68px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 32px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #111;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 44px;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #666;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 34px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      transition: 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-card h3 {
+      margin-bottom: 14px;
+      color: #c2185b;
+      font-size: 24px;
+    }
+
+    .service-card p {
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .gallery {
+      background: #fff;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 24px;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    .why-us {
+      background: linear-gradient(135deg, #fff1f5, #fffaf8);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .why-card {
+      background: white;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .why-card h3 {
+      margin-bottom: 12px;
+      color: #c2185b;
+    }
+
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .contact-box {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .contact-box h3 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .contact-box p {
+      margin-bottom: 16px;
+      color: #555;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+      font-family: inherit;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      border: 0;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 40px 7%;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 900px) {
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .contact-section {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="topbar">
+<div>Luxury Hair &bull; Beauty &bull; Styling &bull; Wallan VIC</div>
+<div class="topbar-right"><span>Mon - Sat: 9AM - 6PM</span> <span>Bookings Open</span></div>
+</div>
+<nav class="navbar">
+<div class="logo"><a href="#h_7768976537241779247805125">Velora Salon</a></div>
+<div class="nav-links"><a href="#services">Services</a> <a href="#gallery">Gallery</a> <a href="#location">Location</a> <a href="#contact">Contact</a> <a href="#contact" class="btn-primary">Book Appointment</a></div>
+</nav>
+<section class="hero">
+<div class="hero-content">
+<h1 id="h_7768976537241779247805125">Luxury Beauty &amp; Hair Experience In Wallan</h1>
+<p>Discover premium hair styling, colouring, beauty treatments, and personalised salon care in a relaxing modern environment.</p>
+<div class="hero-buttons"><a href="#contact" class="btn-primary">Book Now</a> <a href="#services" class="btn-secondary">Explore Services</a></div>
+</div>
+</section>
+<section id="services">
+<div class="section-title">
+<h2>Our Services</h2>
+<p>Professional salon services designed to help you look and feel your best.</p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<h3>Hair Styling</h3>
+<p>Modern cuts, styling, blow waves and personalised hair transformations.</p>
+<div class="price">From $45</div>
+</div>
+<div class="service-card">
+<h3>Hair Colouring</h3>
+<p>Balayage, highlights, global colouring and professional colour correction.</p>
+<div class="price">From $95</div>
+</div>
+<div class="service-card">
+<h3>Beauty Treatments</h3>
+<p>Facials, eyebrow shaping, waxing and premium beauty care services.</p>
+<div class="price">From $35</div>
+</div>
+<div class="service-card">
+<h3>Bridal Packages</h3>
+<p>Elegant bridal makeup and hairstyling tailored for your special day.</p>
+<div class="price">Custom Pricing</div>
+</div>
+</div>
+</section>
+<section class="gallery" id="gallery">
+<div class="section-title">
+<h2>Salon Gallery</h2>
+<p>A glimpse into our salon atmosphere and styling transformations.</p>
+</div>
+<div class="gallery-grid"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Salon Styling"> <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Beauty Salon"> <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Hair Treatment"> <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Hair Styling"></div>
+</section>
+<section class="why-us">
+<div class="section-title">
+<h2>Why Choose Velora Salon</h2>
+<p>We combine luxury service, modern styling techniques and personalised care.</p>
+</div>
+<div class="why-grid">
+<div class="why-card">
+<h3>Experienced Stylists</h3>
+<p>Our talented team delivers modern trends and timeless beauty looks.</p>
+</div>
+<div class="why-card">
+<h3>Premium Products</h3>
+<p>We use high-quality salon products for healthy and beautiful results.</p>
+</div>
+<div class="why-card">
+<h3>Relaxing Environment</h3>
+<p>Enjoy a welcoming salon experience designed for comfort and confidence.</p>
+</div>
+</div>
+</section>
+<section>
+<div class="section-title">
+<h2>Find Us</h2>
+<p>Conveniently located in Wellington Square Shopping Centre, Wallan.</p>
+</div>
+<div class="contact-section">
+<div class="contact-box">
+<h3>Visit Our Salon</h3>
+<p><strong>Address:</strong><br>Shop 11A Wellington Square Shopping Centre,<br>81/89 High St, Wallan VIC 3756</p>
+<p><strong>Phone:</strong><br>(03) 9000 0000</p>
+<p><strong>Email:</strong><br>hello@velorasalon.com.au</p>
+<p><strong>Opening Hours:</strong><br>Monday - Saturday: 9:00 AM &ndash; 6:00 PM</p>
+</div>
+<iframe src="https://www.google.com/maps?q=Shop+11A+Wellington+Square+Shopping+Centre,+81/89+High+St,+Wallan+VIC+3756&amp;output=embed" allowfullscreen="allowfullscreen" loading="lazy">
+      </iframe></div>
+</section>
+<section id="contact">
+<div class="section-title">
+<h2>Book An Appointment</h2>
+<p>Send us your preferred service and appointment time.</p>
+</div>
+<div class="contact-box" style="max-width: 800px; margin: auto;"><form action="https://formspree.io/f/xvzyglrd" method="POST"><input type="text" placeholder="Your Name" required=""> <input type="email" name="email" placeholder="Your Email" required=""> <input type="tel" name="phone" placeholder="Phone Number"> <input type="text" name="service" placeholder="Preferred Service"> <textarea name="message" placeholder="Tell us your preferred date, time and service..." required=""></textarea> <button type="submit" class="btn-primary">Send Booking Request</button></form></div>
+</section>
+<footer>
+<p>&copy; 2026 Velora Salon Wallan. All rights reserved.</p>
+</footer>
+</body>
+</html>
